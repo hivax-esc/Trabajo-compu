@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEXCORE - Tienda de Componentes PC Premium</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+:root {
+--primary-cyan: #00F0FF;
+--primary-magenta: #FF006E;
+--primary-purple: #8338EC;
+--dark-bg: #0A0A0F;
+--darker-bg: #050508;
+--card-bg: #12121A;
+--text-primary: #FFFFFF;
+--text-secondary: #B8B8C8;
+--accent-green: #00FF88;
+--accent-orange: #FF6B35;
+--border-glow: rgba(0, 240, 255, 0.3);
+}
+
+body {
+font-family: 'Rajdhani', sans-serif;
+background: var(--dark-bg);
+color: var(--text-primary);
+line-height: 1.6;
+overflow-x: hidden;
+background-image: 
+radial-gradient(circle at 20% 50%, rgba(131, 56, 236, 0.05) 0%, transparent 50%),
+radial-gradient(circle at 80% 20%, rgba(255, 0, 110, 0.05) 0%, transparent 50%),
+radial-gradient(circle at 40% 80%, rgba(0, 240, 255, 0.05) 0%, transparent 50%);
+}
+
+.header {
+background: rgba(10, 10, 15, 0.95);
+backdrop-filter: blur(20px);
+border-bottom: 2px solid var(--primary-cyan);
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 4px 30px rgba(0, 240, 255, 0.2);
+}
+
+.header-content {
+max-width: 1400px;
+margin: 0 auto;
+padding: 1.5rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+font-family: 'Orbitron', sans-serif;
+font-size: 2rem;
+font-weight: 900;
+background: linear-gradient(135deg, var(--primary-cyan) 0%, var(--primary-magenta) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+letter-spacing: 3px;
+text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.logo:hover {
+transform: scale(1.05);
+filter: brightness(1.2);
+}
+
+.nav-menu {
+display: flex;
+gap: 2.5rem;
+list-style: none;
+}
+
+.nav-menu a {
+color: var(--text-secondary);
+text-decoration: none;
+font-size: 1.1rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: all 0.3s ease;
+position: relative;
+padding: 0.5rem 0;
+}
+
+.nav-menu a::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: linear-gradient(90deg, var(--primary-cyan), var(--primary-magenta));
+transition: width 0.3s ease;
+}
+
+.nav-menu a:hover {
+color: var(--primary-cyan);
+}
+
+.nav-menu a:hover::after {
+width: 100%;
+}
+
+.cart-icon {
+position: relative;
+background: linear-gradient(135deg, var(--primary-purple), var(--primary-magenta));
+padding: 0.8rem 1.5rem;
+border-radius: 50px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s ease;
+border: 2px solid transparent;
+}
+
+.cart-icon:hover {
+transform: translateY(-2px);
+box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
+border-color: var(--primary-cyan);
+}
+
+.cart-count {
+position: absolute;
+top: -8px;
+right: -8px;
+background: var(--accent-green);
+color: var(--dark-bg);
+border-radius: 50%;
+width: 24px;
+height: 24px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.75rem;
+font-weight: 900;
+animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.1); }
+}
+
+.hero {
+background: linear-gradient(135deg, rgba(131, 56, 236, 0.1), rgba(255, 0, 110, 0.1));
+padding: 5rem 2rem;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.hero::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: repeating-linear-gradient(
+45deg,
+transparent,
+transparent 50px,
+rgba(0, 240, 255, 0.02) 50px,
+rgba(0, 240, 255, 0.02) 100px
+);
+animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+0% { transform: translate(0, 0); }
+100% { transform: translate(50px, 50px); }
+}
+
+.hero-content {
+max-width: 1000px;
+margin: 0 auto;
+position: relative;
+z-index: 1;
+}
+
+.hero h1 {
+font-family: 'Orbitron', sans-serif;
+font-size: 4rem;
+font-weight: 900;
+margin-bottom: 1.5rem;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta), var(--primary-purple));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+line-height: 1.2;
+text-transform: uppercase;
+letter-spacing: 3px;
+}
+
+.hero p {
+font-size: 1.4rem;
+color: var(--text-secondary);
+margin-bottom: 2rem;
+font-weight: 400;
+}
+
+.hero-cta {
+display: inline-block;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+color: var(--dark-bg);
+padding: 1.2rem 3rem;
+border-radius: 50px;
+font-size: 1.2rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 2px;
+border: none;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+}
+
+.hero-cta:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 40px rgba(255, 0, 110, 0.5);
+filter: brightness(1.2);
+}
+
+.container {
+max-width: 1400px;
+margin: 0 auto;
+padding: 4rem 2rem;
+}
+
+.section-title {
+font-family: 'Orbitron', sans-serif;
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 3rem;
+text-align: center;
+text-transform: uppercase;
+letter-spacing: 3px;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.filters {
+display: flex;
+gap: 1rem;
+margin-bottom: 3rem;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.filter-btn {
+background: var(--card-bg);
+color: var(--text-secondary);
+border: 2px solid var(--primary-purple);
+padding: 0.8rem 2rem;
+border-radius: 50px;
+font-size: 1rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 1px;
+cursor: pointer;
+transition: all 0.3s ease;
+font-family: 'Rajdhani', sans-serif;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+background: linear-gradient(135deg, var(--primary-purple), var(--primary-magenta));
+color: var(--text-primary);
+border-color: var(--primary-cyan);
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(131, 56, 236, 0.4);
+}
+
+.products-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+gap: 2.5rem;
+margin-bottom: 4rem;
+}
+
+.product-card {
+background: var(--card-bg);
+border: 2px solid transparent;
+border-radius: 20px;
+overflow: hidden;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+position: relative;
+cursor: pointer;
+}
+
+.product-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(255, 0, 110, 0.1));
+opacity: 0;
+transition: opacity 0.3s ease;
+pointer-events: none;
+}
+
+.product-card:hover::before {
+opacity: 1;
+}
+
+.product-card:hover {
+border-color: var(--primary-cyan);
+transform: translateY(-10px);
+box-shadow: 0 20px 60px rgba(0, 240, 255, 0.3);
+}
+
+.product-image {
+width: 100%;
+height: 250px;
+background: linear-gradient(135deg, var(--darker-bg), var(--card-bg));
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 4rem;
+position: relative;
+overflow: hidden;
+}
+
+.product-image::after {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(
+45deg,
+transparent 30%,
+rgba(0, 240, 255, 0.1) 50%,
+transparent 70%
+);
+animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.product-badge {
+position: absolute;
+top: 1rem;
+right: 1rem;
+background: var(--accent-green);
+color: var(--dark-bg);
+padding: 0.4rem 1rem;
+border-radius: 20px;
+font-size: 0.85rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1px;
+z-index: 10;
+}
+
+.product-badge.hot {
+background: var(--accent-orange);
+animation: pulse 2s infinite;
+}
+
+.product-info {
+padding: 1.5rem;
+}
+
+.product-category {
+color: var(--primary-cyan);
+font-size: 0.9rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 1px;
+margin-bottom: 0.5rem;
+}
+
+.product-name {
+font-size: 1.3rem;
+font-weight: 700;
+margin-bottom: 0.8rem;
+color: var(--text-primary);
+}
+
+.product-specs {
+color: var(--text-secondary);
+font-size: 0.95rem;
+margin-bottom: 1rem;
+line-height: 1.6;
+}
+
+.product-price {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 1.5rem;
+}
+
+.price {
+font-family: 'Orbitron', sans-serif;
+font-size: 2rem;
+font-weight: 900;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.add-to-cart-btn {
+background: linear-gradient(135deg, var(--primary-purple), var(--primary-magenta));
+color: var(--text-primary);
+border: none;
+padding: 0.8rem 1.5rem;
+border-radius: 30px;
+font-weight: 700;
+font-size: 0.95rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+cursor: pointer;
+transition: all 0.3s ease;
+font-family: 'Rajdhani', sans-serif;
+}
+
+.add-to-cart-btn:hover {
+transform: scale(1.05);
+box-shadow: 0 8px 20px rgba(131, 56, 236, 0.5);
+}
+
+.cart-sidebar {
+position: fixed;
+right: -450px;
+top: 0;
+width: 450px;
+height: 100vh;
+background: rgba(10, 10, 15, 0.98);
+backdrop-filter: blur(20px);
+box-shadow: -10px 0 50px rgba(0, 0, 0, 0.8);
+transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+z-index: 2000;
+overflow-y: auto;
+border-left: 2px solid var(--primary-cyan);
+}
+
+.cart-sidebar.open {
+right: 0;
+}
+
+.cart-header {
+padding: 2rem;
+border-bottom: 2px solid var(--primary-purple);
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: var(--darker-bg);
+}
+
+.cart-header h2 {
+font-family: 'Orbitron', sans-serif;
+font-size: 1.8rem;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.close-cart {
+background: none;
+border: none;
+color: var(--text-primary);
+font-size: 2rem;
+cursor: pointer;
+transition: all 0.3s ease;
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+}
+
+.close-cart:hover {
+background: var(--primary-magenta);
+transform: rotate(90deg);
+}
+
+.cart-items {
+padding: 2rem;
+}
+
+.cart-item {
+display: flex;
+gap: 1.5rem;
+padding: 1.5rem;
+background: var(--card-bg);
+border-radius: 15px;
+margin-bottom: 1.5rem;
+border: 2px solid transparent;
+transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+border-color: var(--primary-cyan);
+}
+
+.cart-item-icon {
+font-size: 3rem;
+width: 80px;
+height: 80px;
+background: linear-gradient(135deg, var(--darker-bg), var(--card-bg));
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 2px solid var(--primary-purple);
+}
+
+.cart-item-info {
+flex: 1;
+}
+
+.cart-item-name {
+font-weight: 700;
+font-size: 1.1rem;
+margin-bottom: 0.5rem;
+}
+
+.cart-item-price {
+color: var(--primary-cyan);
+font-weight: 600;
+font-size: 1.2rem;
+font-family: 'Orbitron', sans-serif;
+}
+
+.cart-item-controls {
+display: flex;
+align-items: center;
+gap: 1rem;
+margin-top: 1rem;
+}
+
+.quantity-btn {
+background: var(--primary-purple);
+color: var(--text-primary);
+border: none;
+width: 30px;
+height: 30px;
+border-radius: 50%;
+font-size: 1.2rem;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.quantity-btn:hover {
+background: var(--primary-cyan);
+transform: scale(1.1);
+}
+
+.quantity {
+font-weight: 700;
+font-size: 1.1rem;
+min-width: 30px;
+text-align: center;
+}
+
+.remove-btn {
+background: var(--accent-orange);
+color: var(--text-primary);
+border: none;
+padding: 0.4rem 1rem;
+border-radius: 20px;
+font-size: 0.85rem;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s ease;
+text-transform: uppercase;
+margin-left: auto;
+}
+
+.remove-btn:hover {
+background: var(--primary-magenta);
+transform: scale(1.05);
+}
+
+.cart-empty {
+text-align: center;
+padding: 4rem 2rem;
+color: var(--text-secondary);
+}
+
+.cart-empty-icon {
+font-size: 5rem;
+margin-bottom: 1rem;
+opacity: 0.5;
+}
+
+.cart-footer {
+position: sticky;
+bottom: 0;
+background: var(--darker-bg);
+padding: 2rem;
+border-top: 2px solid var(--primary-purple);
+}
+
+.cart-total {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 1.5rem;
+font-size: 1.5rem;
+font-weight: 700;
+}
+
+.cart-total-label {
+color: var(--text-secondary);
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.cart-total-amount {
+font-family: 'Orbitron', sans-serif;
+font-size: 2rem;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.checkout-btn {
+width: 100%;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+color: var(--dark-bg);
+border: none;
+padding: 1.2rem;
+border-radius: 50px;
+font-size: 1.2rem;
+font-weight: 900;
+text-transform: uppercase;
+letter-spacing: 2px;
+cursor: pointer;
+transition: all 0.3s ease;
+font-family: 'Orbitron', sans-serif;
+}
+
+.checkout-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 40px rgba(0, 240, 255, 0.5);
+filter: brightness(1.2);
+}
+
+.checkout-modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.9);
+backdrop-filter: blur(10px);
+z-index: 3000;
+align-items: center;
+justify-content: center;
+animation: fadeIn 0.3s ease;
+}
+
+.checkout-modal.open {
+display: flex;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+.checkout-content {
+background: var(--card-bg);
+border: 2px solid var(--primary-cyan);
+border-radius: 20px;
+padding: 3rem;
+max-width: 600px;
+width: 90%;
+max-height: 90vh;
+overflow-y: auto;
+animation: slideUp 0.4s ease;
+box-shadow: 0 20px 60px rgba(0, 240, 255, 0.4);
+}
+
+@keyframes slideUp {
+from { transform: translateY(50px); opacity: 0; }
+to { transform: translateY(0); opacity: 1; }
+}
+
+.checkout-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 2rem;
+padding-bottom: 1rem;
+border-bottom: 2px solid var(--primary-purple);
+}
+
+.checkout-header h2 {
+font-family: 'Orbitron', sans-serif;
+font-size: 2rem;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.form-group {
+margin-bottom: 1.5rem;
+}
+
+.form-group label {
+display: block;
+color: var(--primary-cyan);
+font-weight: 600;
+margin-bottom: 0.5rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+width: 100%;
+background: var(--darker-bg);
+border: 2px solid var(--primary-purple);
+color: var(--text-primary);
+padding: 1rem;
+border-radius: 10px;
+font-size: 1rem;
+font-family: 'Rajdhani', sans-serif;
+transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+outline: none;
+border-color: var(--primary-cyan);
+box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+}
+
+.payment-methods {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1rem;
+margin-bottom: 1.5rem;
+}
+
+.payment-method {
+background: var(--darker-bg);
+border: 2px solid var(--primary-purple);
+border-radius: 10px;
+padding: 1.5rem 1rem;
+text-align: center;
+cursor: pointer;
+transition: all 0.3s ease;
+font-size: 2rem;
+}
+
+.payment-method:hover,
+.payment-method.selected {
+border-color: var(--primary-cyan);
+background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(255, 0, 110, 0.1));
+transform: scale(1.05);
+}
+
+.order-summary {
+background: var(--darker-bg);
+border: 2px solid var(--primary-purple);
+border-radius: 15px;
+padding: 1.5rem;
+margin: 2rem 0;
+}
+
+.order-summary h3 {
+color: var(--primary-cyan);
+margin-bottom: 1rem;
+font-family: 'Orbitron', sans-serif;
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+
+.summary-row {
+display: flex;
+justify-content: space-between;
+padding: 0.5rem 0;
+border-bottom: 1px solid var(--primary-purple);
+}
+
+.summary-row.total {
+border: none;
+font-size: 1.5rem;
+font-weight: 900;
+margin-top: 1rem;
+padding-top: 1rem;
+border-top: 2px solid var(--primary-cyan);
+}
+
+.summary-row.total .amount {
+font-family: 'Orbitron', sans-serif;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.place-order-btn {
+width: 100%;
+background: linear-gradient(135deg, var(--accent-green), var(--primary-cyan));
+color: var(--dark-bg);
+border: none;
+padding: 1.2rem;
+border-radius: 50px;
+font-size: 1.2rem;
+font-weight: 900;
+text-transform: uppercase;
+letter-spacing: 2px;
+cursor: pointer;
+transition: all 0.3s ease;
+font-family: 'Orbitron', sans-serif;
+margin-top: 1rem;
+}
+
+.place-order-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+filter: brightness(1.2);
+}
+
+.success-modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.95);
+backdrop-filter: blur(10px);
+z-index: 4000;
+align-items: center;
+justify-content: center;
+}
+
+.success-modal.open {
+display: flex;
+}
+
+.success-content {
+background: var(--card-bg);
+border: 3px solid var(--accent-green);
+border-radius: 20px;
+padding: 4rem 3rem;
+text-align: center;
+max-width: 500px;
+animation: bounceIn 0.6s ease;
+box-shadow: 0 20px 60px rgba(0, 255, 136, 0.4);
+}
+
+@keyframes bounceIn {
+0% { transform: scale(0.3); opacity: 0; }
+50% { transform: scale(1.05); }
+70% { transform: scale(0.9); }
+100% { transform: scale(1); opacity: 1; }
+}
+
+.success-icon {
+font-size: 6rem;
+color: var(--accent-green);
+margin-bottom: 1.5rem;
+animation: checkmark 0.8s ease;
+}
+
+@keyframes checkmark {
+0% { transform: scale(0) rotate(-45deg); }
+100% { transform: scale(1) rotate(0deg); }
+}
+
+.success-content h2 {
+font-family: 'Orbitron', sans-serif;
+font-size: 2.5rem;
+color: var(--accent-green);
+margin-bottom: 1rem;
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+
+.order-number {
+background: var(--darker-bg);
+border: 2px solid var(--primary-cyan);
+border-radius: 10px;
+padding: 1rem;
+margin: 2rem 0;
+font-family: 'Orbitron', sans-serif;
+font-size: 1.5rem;
+color: var(--primary-cyan);
+}
+
+.continue-btn {
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+color: var(--dark-bg);
+border: none;
+padding: 1rem 3rem;
+border-radius: 50px;
+font-size: 1.1rem;
+font-weight: 900;
+text-transform: uppercase;
+letter-spacing: 2px;
+cursor: pointer;
+transition: all 0.3s ease;
+font-family: 'Orbitron', sans-serif;
+margin-top: 1rem;
+}
+
+.continue-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 30px rgba(0, 240, 255, 0.5);
+}
+
+.footer {
+background: var(--darker-bg);
+border-top: 2px solid var(--primary-purple);
+padding: 3rem 2rem;
+margin-top: 4rem;
+text-align: center;
+}
+
+.footer-content {
+max-width: 1400px;
+margin: 0 auto;
+}
+
+.footer-logo {
+font-family: 'Orbitron', sans-serif;
+font-size: 2rem;
+font-weight: 900;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+margin-bottom: 1rem;
+}
+
+.footer-links {
+display: flex;
+justify-content: center;
+gap: 2rem;
+margin: 2rem 0;
+flex-wrap: wrap;
+}
+
+.footer-links a {
+color: var(--text-secondary);
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+color: var(--primary-cyan);
+}
+
+@media (max-width: 768px) {
+.hero h1 {
+font-size: 2.5rem;
+}
+.hero p {
+font-size: 1.1rem;
+}
+.nav-menu {
+display: none;
+}
+.products-grid {
+grid-template-columns: 1fr;
+}
+.cart-sidebar {
+width: 100%;
+right: -100%;
+}
+.form-row {
+grid-template-columns: 1fr;
+}
+.payment-methods {
+grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="header-content">
+<div class="logo" onclick="window.location.reload()">⚡ HEXCORE</div>
+<nav>
+<ul class="nav-menu">
+<li><a href="#productos">Productos</a></li>
+<li><a href="#ofertas">Ofertas</a></li>
+<li><a href="#builds">PC Builder</a></li>
+<li><a href="#soporte">Soporte</a></li>
+</ul>
+</nav>
+<div class="cart-icon" onclick="toggleCart()">
+🛒 Carrito
+<span class="cart-count" id="cartCount">0</span>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Construye Tu PC de Ensueño</h1>
+<p>Los mejores componentes gaming y workstation del mercado. Rendimiento extremo garantizado.</p>
+<button class="hero-cta" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">
+Explorar Componentes →
+</button>
+</div>
+</section>
+
+<div class="container" id="productos">
+<h2 class="section-title">🎮 Catálogo de Componentes</h2>
+
+<div class="filters">
+<button class="filter-btn active" onclick="filterProducts('all')">Todos</button>
+<button class="filter-btn" onclick="filterProducts('gpu')">Tarjetas Gráficas</button>
+<button class="filter-btn" onclick="filterProducts('cpu')">Procesadores</button>
+<button class="filter-btn" onclick="filterProducts('ram')">Memoria RAM</button>
+<button class="filter-btn" onclick="filterProducts('storage')">Almacenamiento</button>
+<button class="filter-btn" onclick="filterProducts('mobo')">Placas Base</button>
+<button class="filter-btn" onclick="filterProducts('psu')">Fuentes</button>
+</div>
+
+<div class="products-grid" id="productsGrid"></div>
+</div>
+
+<div class="cart-sidebar" id="cartSidebar">
+<div class="cart-header">
+<h2>🛒 Tu Carrito</h2>
+<button class="close-cart" onclick="toggleCart()">×</button>
+</div>
+<div class="cart-items" id="cartItems"></div>
+<div class="cart-footer">
+<div class="cart-total">
+<span class="cart-total-label">Total:</span>
+<span class="cart-total-amount" id="cartTotal">0€</span>
+</div>
+<button class="checkout-btn" onclick="openCheckout()">Proceder al Pago →</button>
+</div>
+</div>
+
+<div class="checkout-modal" id="checkoutModal">
+<div class="checkout-content">
+<div class="checkout-header">
+<h2>💳 Finalizar Compra</h2>
+<button class="close-cart" onclick="closeCheckout()">×</button>
+</div>
+
+<form id="checkoutForm" onsubmit="placeOrder(event)">
+<h3 style="color: var(--primary-cyan); margin-bottom: 1rem; font-family: 'Orbitron', sans-serif;">Información de Envío</h3>
+<div class="form-group">
+<label>Nombre Completo</label>
+<input type="text" required placeholder="Juan Pérez García">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="email" required placeholder="tu@email.com">
+</div>
+
+<div class="form-group">
+<label>Teléfono</label>
+<input type="tel" required placeholder="+34 600 000 000">
+</div>
+
+<div class="form-group">
+<label>Dirección Completa</label>
+<input type="text" required placeholder="Calle Principal, 123">
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label>Ciudad</label>
+<input type="text" required placeholder="Madrid">
+</div>
+<div class="form-group">
+<label>Código Postal</label>
+<input type="text" required placeholder="28001">
+</div>
+</div>
+
+<h3 style="color: var(--primary-cyan); margin: 2rem 0 1rem 0; font-family: 'Orbitron', sans-serif;">Método de Pago</h3>
+<div class="payment-methods">
+<div class="payment-method selected" onclick="selectPayment(this)">💳</div>
+<div class="payment-method" onclick="selectPayment(this)">🏦</div>
+<div class="payment-method" onclick="selectPayment(this)">📱</div>
+</div>
+
+<div class="form-group">
+<label>Número de Tarjeta</label>
+<input type="text" required placeholder="1234 5678 9012 3456" maxlength="19">
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label>Fecha de Expiración</label>
+<input type="text" required placeholder="MM/AA" maxlength="5">
+</div>
+<div class="form-group">
+<label>CVV</label>
+<input type="text" required placeholder="123" maxlength="3">
+</div>
+</div>
+
+<div class="order-summary">
+<h3>📋 Resumen del Pedido</h3>
+<div class="summary-row">
+<span>Subtotal</span>
+<span class="amount" id="summarySubtotal">0€</span>
+</div>
+<div class="summary-row">
+<span>Envío</span>
+<span class="amount">GRATIS</span>
+</div>
+<div class="summary-row">
+<span>IVA (21%)</span>
+<span class="amount" id="summaryTax">0€</span>
+</div>
+<div class="summary-row total">
+<span>TOTAL</span>
+<span class="amount" id="summaryTotal">0€</span>
+</div>
+</div>
+
+<button type="submit" class="place-order-btn">🚀 Confirmar Pedido</button>
+</form>
+</div>
+</div>
+
+<div class="success-modal" id="successModal">
+<div class="success-content">
+<div class="success-icon">✓</div>
+<h2>¡Pedido Confirmado!</h2>
+<p style="color: var(--text-secondary); margin: 1rem 0;">Tu pedido ha sido procesado exitosamente</p>
+<div class="order-number">
+Nº PEDIDO: <span id="orderNumber"></span>
+</div>
+<p style="color: var(--text-secondary); margin: 1rem 0;">Recibirás un email de confirmación en breve. Tiempo estimado de entrega: 24-48h</p>
+<button class="continue-btn" onclick="closeSuccess()">Continuar Comprando</button>
+</div>
+</div>
+
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-logo">⚡ HEXCORE</div>
+<p style="color: var(--text-secondary); margin: 1rem 0;">Tu tienda de confianza para componentes gaming de alto rendimiento</p>
+<div class="footer-links">
+<a href="#">Sobre Nosotros</a>
+<a href="#">Política de Envío</a>
+<a href="#">Devoluciones</a>
+<a href="#">Garantía</a>
+<a href="#">Contacto</a>
+<a href="#">FAQ</a>
+</div>
+<p style="color: var(--text-secondary); margin-top: 2rem; font-size: 0.9rem;">
+© 2024 HEXCORE. Todos los derechos reservados. | IVA incluido en todos los precios
+</p>
+</div>
+</footer>
+
+<script>
+const products = [
+{
+id: 1,
+name: 'NVIDIA RTX 4090',
+category: 'gpu',
+price: 1999,
+icon: '🎮',
+specs: '24GB GDDR6X | 16384 CUDA Cores | Boost 2520 MHz',
+badge: 'HOT',
+badgeClass: 'hot'
+},
+{
+id: 2,
+name: 'AMD Ryzen 9 7950X',
+category: 'cpu',
+price: 699,
+icon: '⚡',
+specs: '16 Cores / 32 Threads | 5.7 GHz Max Boost | 80MB Cache',
+badge: 'TOP',
+badgeClass: ''
+},
+{
+id: 3,
+name: 'NVIDIA RTX 4080 SUPER',
+category: 'gpu',
+price: 1199,
+icon: '🎮',
+specs: '16GB GDDR6X | 10240 CUDA Cores | Boost 2550 MHz',
+badge: null
+},
+{
+id: 4,
+name: 'Intel Core i9-14900K',
+category: 'cpu',
+price: 649,
+icon: '⚡',
+specs: '24 Cores (8P+16E) | 6.0 GHz Turbo | 36MB Cache',
+badge: 'HOT',
+badgeClass: 'hot'
+},
+{
+id: 5,
+name: 'G.Skill Trident Z5 RGB',
+category: 'ram',
+price: 299,
+icon: '💾',
+specs: '32GB (2x16GB) DDR5 | 6400MHz CL32 | RGB Fusion',
+badge: null
+},
+{
+id: 6,
+name: 'Corsair Dominator Platinum',
+category: 'ram',
+price: 399,
+icon: '💾',
+specs: '64GB (2x32GB) DDR5 | 6000MHz CL30 | RGB Premium',
+badge: 'TOP',
+badgeClass: ''
+},
+{
+id: 7,
+name: 'Samsung 990 PRO',
+category: 'storage',
+price: 199,
+icon: '💿',
+specs: '2TB NVMe Gen4 | 7450 MB/s Read | 6900 MB/s Write',
+badge: null
+},
+{
+id: 8,
+name: 'WD Black SN850X',
+category: 'storage',
+price: 329,
+icon: '💿',
+specs: '4TB NVMe Gen4 | 7300 MB/s Read | 6600 MB/s Write',
+badge: 'HOT',
+badgeClass: 'hot'
+},
+{
+id: 9,
+name: 'ASUS ROG Maximus Z790',
+category: 'mobo',
+price: 599,
+icon: '🔧',
+specs: 'Intel Z790 | DDR5 | PCIe 5.0 | WiFi 6E | RGB',
+badge: 'TOP',
+badgeClass: ''
+},
+{
+id: 10,
+name: 'MSI MAG X670E',
+category: 'mobo',
+price: 449,
+icon: '🔧',
+specs: 'AMD X670E | DDR5 | PCIe 5.0 | WiFi 6E | Mystic Light',
+badge: null
+},
+{
+id: 11,
+name: 'Corsair RM1000x',
+category: 'psu',
+price: 199,
+icon: '🔌',
+specs: '1000W 80+ Gold | Modular | Silent | 10 Years Warranty',
+badge: null
+},
+{
+id: 12,
+name: 'Seasonic Prime TX-1600',
+category: 'psu',
+price: 599,
+icon: '🔌',
+specs: '1600W 80+ Titanium | Full Modular | Fanless Hybrid',
+badge: 'TOP',
+badgeClass: ''
+},
+{
+id: 13,
+name: 'AMD Radeon RX 7900 XTX',
+category: 'gpu',
+price: 999,
+icon: '🎮',
+specs: '24GB GDDR6 | 6144 Stream Processors | Boost 2500 MHz',
+badge: 'HOT',
+badgeClass: 'hot'
+},
+{
+id: 14,
+name: 'AMD Ryzen 7 7800X3D',
+category: 'cpu',
+price: 449,
+icon: '⚡',
+specs: '8 Cores / 16 Threads | 5.0 GHz Boost | 96MB 3D V-Cache',
+badge: 'TOP',
+badgeClass: ''
+},
+{
+id: 15,
+name: 'Kingston Fury Beast',
+category: 'ram',
+price: 149,
+icon: '💾',
+specs: '32GB (2x16GB) DDR5 | 5600MHz CL36 | Intel XMP',
+badge: null
+},
+{
+id: 16,
+name: 'Crucial T700',
+category: 'storage',
+price: 279,
+icon: '💿',
+specs: '2TB NVMe Gen5 | 12400 MB/s Read | 11800 MB/s Write',
+badge: 'NEW',
+badgeClass: ''
+},
+{
+id: 17,
+name: 'Gigabyte B650 AORUS Elite',
+category: 'mobo',
+price: 249,
+icon: '🔧',
+specs: 'AMD B650 | DDR5 | PCIe 4.0 | WiFi 6 | RGB Fusion',
+badge: null
+},
+{
+id: 18,
+name: 'be quiet! Dark Power Pro 13',
+category: 'psu',
+price: 349,
+icon: '🔌',
+specs: '1300W 80+ Titanium | Modular | Silent Wings | 10Y',
+badge: 'TOP',
+badgeClass: ''
+}
+];
+
+let cart = [];
+let currentFilter = 'all';
+
+function renderProducts() {
+const grid = document.getElementById('productsGrid');
+const filtered = currentFilter === 'all' 
+? products 
+: products.filter(p => p.category === currentFilter);
+
+grid.innerHTML = filtered.map(product => `
+<div class="product-card" onclick="addToCart(${product.id})">
+<div class="product-image">
+${product.badge ? `<div class="product-badge ${product.badgeClass}">${product.badge}</div>` : ''}
+${product.icon}
+</div>
+<div class="product-info">
+<div class="product-category">${getCategoryName(product.category)}</div>
+<div class="product-name">${product.name}</div>
+<div class="product-specs">${product.specs}</div>
+<div class="product-price">
+<div class="price">${product.price}€</div>
+<button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id})">
++ Añadir
+</button>
+</div>
+</div>
+</div>
+`).join('');
+}
+
+function getCategoryName(cat) {
+const names = {
+'gpu': 'Tarjeta Gráfica',
+'cpu': 'Procesador',
+'ram': 'Memoria RAM',
+'storage': 'Almacenamiento',
+'mobo': 'Placa Base',
+'psu': 'Fuente de Poder'
+};
+return names[cat] || cat;
+}
+
+function filterProducts(category) {
+currentFilter = category;
+document.querySelectorAll('.filter-btn').forEach(btn => {
+btn.classList.remove('active');
+});
+event.target.classList.add('active');
+renderProducts();
+}
+
+function addToCart(productId) {
+const product = products.find(p => p.id === productId);
+const existingItem = cart.find(item => item.id === productId);
+
+if (existingItem) {
+existingItem.quantity++;
+} else {
+cart.push({ ...product, quantity: 1 });
+}
+
+updateCart();
+showNotification('✓ Producto añadido al carrito');
+}
+
+function removeFromCart(productId) {
+cart = cart.filter(item => item.id !== productId);
+updateCart();
+}
+
+function updateQuantity(productId, change) {
+const item = cart.find(item => item.id === productId);
+if (item) {
+item.quantity += change;
+if (item.quantity <= 0) {
+removeFromCart(productId);
+} else {
+updateCart();
+}
+}
+}
+
+function updateCart() {
+const cartItems = document.getElementById('cartItems');
+const cartCount = document.getElementById('cartCount');
+const cartTotal = document.getElementById('cartTotal');
+
+cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+if (cart.length === 0) {
+cartItems.innerHTML = `
+<div class="cart-empty">
+<div class="cart-empty-icon">🛒</div>
+<p>Tu carrito está vacío</p>
+<p style="font-size: 0.9rem; margin-top: 0.5rem;">¡Añade algunos componentes épicos!</p>
+</div>
+`;
+cartTotal.textContent = '0€';
+} else {
+cartItems.innerHTML = cart.map(item => `
+<div class="cart-item">
+<div class="cart-item-icon">${item.icon}</div>
+<div class="cart-item-info">
+<div class="cart-item-name">${item.name}</div>
+<div class="cart-item-price">${item.price}€</div>
+<div class="cart-item-controls">
+<button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+<span class="quantity">${item.quantity}</span>
+<button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+<button class="remove-btn" onclick="removeFromCart(${item.id})">Eliminar</button>
+</div>
+</div>
+</div>
+`).join('');
+
+const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+cartTotal.textContent = total.toFixed(2) + '€';
+}
+}
+
+function toggleCart() {
+document.getElementById('cartSidebar').classList.toggle('open');
+}
+
+function openCheckout() {
+if (cart.length === 0) {
+showNotification('⚠ Tu carrito está vacío');
+return;
+}
+
+const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+const tax = subtotal * 0.21;
+const total = subtotal + tax;
+
+document.getElementById('summarySubtotal').textContent = subtotal.toFixed(2) + '€';
+document.getElementById('summaryTax').textContent = tax.toFixed(2) + '€';
+document.getElementById('summaryTotal').textContent = total.toFixed(2) + '€';
+
+document.getElementById('checkoutModal').classList.add('open');
+toggleCart();
+}
+
+function closeCheckout() {
+document.getElementById('checkoutModal').classList.remove('open');
+}
+
+function selectPayment(element) {
+document.querySelectorAll('.payment-method').forEach(method => {
+method.classList.remove('selected');
+});
+element.classList.add('selected');
+}
+
+function placeOrder(event) {
+event.preventDefault();
+closeCheckout();
+
+const orderNumber = 'HEX' + Math.random().toString(36).substr(2, 9).toUpperCase();
+document.getElementById('orderNumber').textContent = orderNumber;
+document.getElementById('successModal').classList.add('open');
+
+cart = [];
+updateCart();
+}
+
+function closeSuccess() {
+document.getElementById('successModal').classList.remove('open');
+document.getElementById('checkoutForm').reset();
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showNotification(message) {
+const notification = document.createElement('div');
+notification.style.cssText = `
+position: fixed;
+top: 100px;
+right: 30px;
+background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+color: var(--dark-bg);
+padding: 1rem 2rem;
+border-radius: 50px;
+font-weight: 700;
+z-index: 5000;
+animation: slideInRight 0.4s ease, slideOutRight 0.4s ease 2.6s;
+box-shadow: 0 10px 30px rgba(0, 240, 255, 0.5);
+`;
+notification.textContent = message;
+document.body.appendChild(notification);
+setTimeout(() => notification.remove(), 3000);
+}
+
+const style = document.createElement('style');
+style.textContent = `
+@keyframes slideInRight {
+from { transform: translateX(400px); opacity: 0; }
+to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideOutRight {
+from { transform: translateX(0); opacity: 1; }
+to { transform: translateX(400px); opacity: 0; }
+}
+`;
+document.head.appendChild(style);
+
+renderProducts();
+updateCart();
+</script>
+
+</body>
+</html>
